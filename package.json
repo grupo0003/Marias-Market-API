@@ -5,7 +5,7 @@
   "main": "./src/server.js",
   "scripts": {
     "start": "node ./src/server.js",
-    "dev": "nodemon ./src/server.js" ,
+    "dev": "nodemon ./src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -49,7 +49,8 @@
   "dependencies": {
     "dotenv": "^14.2.0",
     "express": "^4.17.2",
-    "mongoose": "^6.1.7"
+    "mongoose": "^6.1.7",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "eslint": "^7.32.0",
