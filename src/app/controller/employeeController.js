@@ -1,18 +1,15 @@
-// rota temporária
-
-const employee = []
+const EmployeeService = require('../service/EmployeeService')
 
 class EmployeeController {
-  create (req, res) {
+  async create (req, res) {
     const resgisterEmployee = req.body
     try {
-      employee.push(resgisterEmployee)
-      const result = employee.find((employee) => {
-        return employee.name === resgisterEmployee.name
-      })
+      const result = await EmployeeService.create(resgisterEmployee)
       return res.status(201).json(result)
     } catch (error) {
       return res.status(500).json({ message: error.message })
     }
   }
 }
+
+module.exports = new EmployeeController()
