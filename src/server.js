@@ -1,6 +1,12 @@
-const app = require('./app')
-const port = process.env.PORT || 3000
+const App = require('./app')
 
-app.listen(port, () => {
-  console.log(`servidor rodadando na porta ${port}`)
-})
+async function bootstrap () {
+  const app = await App.init()
+  const port = process.env.PORT || 3000
+
+  app.listen(port, () => {
+    console.log(`Servidor rodadando na porta ${port}`)
+  })
+}
+
+bootstrap()
