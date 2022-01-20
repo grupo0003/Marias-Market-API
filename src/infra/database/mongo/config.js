@@ -1,4 +1,7 @@
+require('dotenv').config()
+
 const config = {
+  drive: process.env.DB_DRIVE || 'mongodb',
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   user: process.env.DB_USER,
@@ -12,6 +15,6 @@ Object.keys(config).forEach(key => {
   }
 })
 
-config.uri = `mongodb://${config.user}:${config.pass}@${config.host}:${config.port}/`
+config.uri = `${config.drive}://${config.user}:${config.pass}@${config.host}${(config.drive === 'mongodb') ? `:${config.port}` : ''}/`
 
 module.exports = config
