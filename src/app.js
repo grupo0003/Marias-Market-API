@@ -1,6 +1,7 @@
 const express = require('express')
 
 const Database = require('./infra/database/mongo/index')
+const routes = require('./routes/index')
 
 class App {
   static async init () {
@@ -23,6 +24,7 @@ class App {
   }
 
   routes () {
+    this.express.use('/api/', routes)
   }
 }
 
