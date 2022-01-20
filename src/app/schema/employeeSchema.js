@@ -51,7 +51,9 @@ schema.pre('save', function (next) {
 
 schema.method('toJSON', function () {
   const { __v, _id, ...employee } = this.toObject()
+
   employee.employee_id = _id
+  employee.cpf = employee.cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4')
 
   return employee
 })
