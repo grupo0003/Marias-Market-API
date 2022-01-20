@@ -1,10 +1,12 @@
-const { Router } = require('express')
 const express = require('express')
 const router = require('./routes')
+require('./infra/database/mongo')
 
 class App {
   constructor () {
     this.server = express()
+    this.middlewares()
+    this.routes()
   }
 
   middlewares () {
@@ -12,7 +14,7 @@ class App {
   }
 
   routes () {
-    Router(this.server)
+    router(this.server)
   }
 }
 
