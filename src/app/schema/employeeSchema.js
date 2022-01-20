@@ -1,7 +1,14 @@
 const mongoose = require('mongoose')
 const { Schema } = mongoose
 
+const uuid = require('uuid')
+
 const schema = new Schema({
+  _id: {
+    type: String,
+    default: uuid.v4,
+    immutable: true
+  },
   name: {
     type: String,
     required: true
@@ -13,6 +20,7 @@ const schema = new Schema({
   },
   office: {
     type: String,
+    enum: ['gerente', 'vendedor', 'caixa'],
     required: true
   },
   birthday: {
@@ -22,11 +30,13 @@ const schema = new Schema({
   situation: {
     type: String,
     require: true,
+    enum: ['activate', 'deactivate'],
     default: 'activate'
   },
   createdAt: {
     type: Date,
-    default: Date.now
+    default: Date.now,
+    immutable: true
   },
   updatedAt: {
     type: Date,
@@ -37,6 +47,13 @@ const schema = new Schema({
 schema.pre('save', function (next) {
   this.updatedAt = Date.now()
   return next()
+})
+
+schema.method('toJSON', function () {
+  const { __v, _id, ...employee } = this.toObject()
+  employee.employee_id = _id
+
+  return employee
 })
 
 const Employee = mongoose.model('Employee', schema)
