@@ -1,0 +1,65 @@
+{
+  "name": "register-employees-products-",
+  "version": "1.0.0",
+  "description": "📝api: cadastro de funcionários e produtos",
+  "main": "./src/server.js",
+  "scripts": {
+    "start": "node ./src/server.js",
+    "dev": "nodemon ./src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grupo0003/register-Employees-Products-.git"
+  },
+  "keywords": [],
+  "author": "grupo003",
+  "contributors": [
+    {
+      "name": "Brendson Victor",
+      "email": "brendson.campos_bols@compasso.com.br",
+      "url": "https://github.com/br3nds0n"
+    },
+    {
+      "name": "Diogo Alexandre",
+      "email": "diogo.silva_bols@compasso.com.br",
+      "url": "https://github.com/diogo-alexandre"
+    },
+    {
+      "name": "Felipe Bezerra",
+      "email": "felipe.carmo_bols@compasso.com.br",
+      "url": "https://github.com/Felipbdc"
+    },
+    {
+      "name": "Leandro Barros",
+      "email": "leandro.reis_bols@compasso.com.br",
+      "url": "https://github.com/leoBarrosDev"
+    },
+    {
+      "name": "Washington Jose",
+      "email": "washington.pere_bols@compasso.com.br",
+      "url": "https://github.com/washington-wj"
+    }
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/grupo0003/register-Employees-Products-/issues"
+  },
+  "homepage": "https://github.com/grupo0003/register-Employees-Products-#readme",
+  "dependencies": {
+    "cpf-cnpj-validator": "^1.0.3",
+    "dotenv": "^14.2.0",
+    "express": "^4.17.2",
+    "joi": "^17.5.0",
+    "mongoose": "^6.1.7",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.2.0",
+    "nodemon": "^2.0.15"
+  }
+}
