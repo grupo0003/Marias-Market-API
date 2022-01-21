@@ -7,8 +7,21 @@ class EmployeeService {
   }
 
   async findById (id) {
-    const result = await EmployeeRepository.findById(id)
-    return result
+    const employee = await EmployeeRepository.findById(id)
+    return employee
+  }
+
+  async update (id, payload) {
+    const employee = await this.findById(id)
+    const mutables = ['name', 'cpf', 'birthday', 'office', 'situation']
+
+    mutables.forEach(key => {
+      if (payload[key] !== undefined) {
+        employee[key] = payload[key]
+      }
+    })
+    await EmployeeRepository.update(employee)
+    return employee
   }
 
   async findAll (employee) {

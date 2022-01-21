@@ -5,5 +5,6 @@ const createValidate = require('../../app/validation/employee/create')
 router
   .get('/employee', EmployeeController.list)
   .post('/employee', createValidate, EmployeeController.create)
+  .put('/employee/:id', EmployeeController.update)
 
 module.exports = router

@@ -6,11 +6,17 @@ class EmployeeRepository {
   }
 
   async findById (id) {
-    return schema.findOne({ _id: id })
+    return schema.findOne({
+      _id: id
+    })
   }
 
   async findAll (employee) {
     return schema.find()
+  }
+
+  async update (payload) {
+    return schema.updateOne(payload)
   }
 }
 

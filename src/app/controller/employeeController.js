@@ -11,6 +11,17 @@ class EmployeeController {
     }
   }
 
+  async update (req, res) {
+    const { id } = req.params
+    const updateEmployee = req.body
+    try {
+      const employee = await EmployeeService.update(id, updateEmployee)
+      return res.status(201).json(employee)
+    } catch (error) {
+      return res.status(500).json(error.message)
+    }
+  }
+
   async list (req, res) {
     const payload = req.query
     try {
