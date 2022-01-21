@@ -6,17 +6,21 @@ class EmployeeService {
     return result
   }
 
-  async update (id, payload) {
+  async findById (id) {
     const employee = await EmployeeRepository.findById(id)
-    const mutables = ['nome', 'cpf', 'birthday', 'office', 'situation']
+    return employee
+  }
+
+  async update (id, payload) {
+    const employee = await this.findById(id)
+    const mutables = ['name', 'cpf', 'birthday', 'office', 'situation']
 
     mutables.forEach(key => {
       if (payload[key] !== undefined) {
         employee[key] = payload[key]
       }
     })
-
-    employee.save()
+    await EmployeeRepository.update(employee)
     return employee
   }
 
