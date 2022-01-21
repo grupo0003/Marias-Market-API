@@ -21,6 +21,16 @@ class EmployeeController {
       return res.status(500).json(error.message)
     }
   }
+
+  async list (req, res) {
+    const payload = req.query
+    try {
+      const result = await EmployeeService.findAll(payload)
+      return res.status(200).json(result)
+    } catch (error) {
+      return res.status(500).json({ message: error.message })
+    }
+  }
 }
 
 module.exports = new EmployeeController()

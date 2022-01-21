@@ -5,12 +5,12 @@ class EmployeeRepository {
     return schema.create(employee)
   }
 
-  async update (employee) {
-    return schema.update(employee)
-  }
-
   async findById (id) {
     return schema.findById(id)
+  }
+
+  async findAll (employee) {
+    return schema.find()
   }
 }
 

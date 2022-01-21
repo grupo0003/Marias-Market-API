@@ -19,6 +19,11 @@ class EmployeeService {
     employee.save()
     return employee
   }
+
+  async findAll (employee) {
+    const result = await EmployeeRepository.findAll(employee)
+    return result
+  }
 }
 
 module.exports = new EmployeeService()
