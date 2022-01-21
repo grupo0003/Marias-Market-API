@@ -5,6 +5,10 @@ class EmployeeRepository {
     return schema.create(employee)
   }
 
+  async findById (id) {
+    return schema.findOne({ _id: id })
+  }
+
   async findAll (employee) {
     return schema.find()
   }
