@@ -6,6 +6,11 @@ class EmployeeService {
     return result
   }
 
+  async findById (id) {
+    const result = await EmployeeRepository.findById(id)
+    return result
+  }
+
   async findAll (employee) {
     const result = await EmployeeRepository.findAll(employee)
     return result
