@@ -1,3 +1,4 @@
+require('dotenv').config()
 const config = {
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,

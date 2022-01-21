@@ -10,6 +10,17 @@ class EmployeeController {
       return res.status(500).json({ message: error.message })
     }
   }
+
+  async update (req, res) {
+    const { id } = req.params
+    const updateEmployee = req.body
+    try {
+      const employee = await EmployeeService.update(id, updateEmployee)
+      return res.status(201).json(employee)
+    } catch (error) {
+      return res.status(500).json(error.message)
+    }
+  }
 }
 
 module.exports = new EmployeeController()
