@@ -1,21 +1,21 @@
 const { validator, cpf } = require('cpf-cnpj-validator')
-const Joi = require('joi').extend(validator)
+const JoiDate = require('@joi/date')
+const Joi = require('joi')
+  .extend(validator)
+  .extend(JoiDate)
 
 module.exports = async (req, res, next) => {
   try {
     const schema = Joi.object({
       name: Joi.string()
-        .alphanum()
-        .required()
-        .min(3)
-        .max(30),
+        .required(),
 
       cpf: Joi.string()
         .min(11)
         .max(11)
         .custom((value, help) => {
           if (!cpf.isValid(value)) {
-            return help.message('Cpf inválido')
+            return help.message('Invalid CPF')
           } else {
             return true
           }
@@ -26,8 +26,8 @@ module.exports = async (req, res, next) => {
         .required(),
 
       birthday: Joi.date()
+        .format('DD/MM/YYYY')
         .max('now')
-        .iso()
         .required(),
 
       situation: Joi.string()
