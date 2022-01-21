@@ -1,5 +1,8 @@
 const { validator, cpf } = require('cpf-cnpj-validator')
-const Joi = require('joi').extend(validator)
+const JoiDate = require('@joi/date')
+const Joi = require('joi')
+  .extend(validator)
+  .extend(JoiDate)
 
 module.exports = async (req, res, next) => {
   try {
@@ -23,8 +26,8 @@ module.exports = async (req, res, next) => {
         .required(),
 
       birthday: Joi.date()
+        .format('DD/MM/YYYY')
         .max('now')
-        .iso()
         .required(),
 
       situation: Joi.string()
