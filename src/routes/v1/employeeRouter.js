@@ -6,5 +6,6 @@ router
   .get('/employee', EmployeeController.list)
   .post('/employee', createValidate, EmployeeController.create)
   .put('/employee/:id', EmployeeController.update)
+  .delete('/employee/:id', EmployeeController.delete)
 
 module.exports = router
