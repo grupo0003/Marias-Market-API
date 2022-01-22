@@ -9,3 +9,5 @@ function clearObject (obj) {
 
   return obj
 }
+
+module.exports = clearObject
