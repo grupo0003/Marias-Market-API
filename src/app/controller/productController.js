@@ -16,6 +16,17 @@ class ProductController {
       products: products
     })
   }
+
+  async create (req, res) {
+    // eslint-disable-next-line camelcase
+    const { name, category, price, employee_id } = req.body
+    try {
+      const result = await ProductService.create({ name, category, price, employee_id })
+      return res.status(201).json(result)
+    } catch (error) {
+      return res.status(500).json({ message: error.message })
+    }
+  }
 }
 
 module.exports = new ProductController()
