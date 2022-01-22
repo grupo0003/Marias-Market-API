@@ -38,6 +38,16 @@ class EmployeeController {
       employees: employees
     })
   }
+
+  async delete (req, res) {
+    const { id } = req.params
+    try {
+      await EmployeeService.delete(id)
+      return res.status(204).json({ message: `id ${id} Deleted` })
+    } catch (error) {
+      return res.status(404).json({ message: `id ${id} Not founded` })
+    }
+  }
 }
 
 module.exports = new EmployeeController()

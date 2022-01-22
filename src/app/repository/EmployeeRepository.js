@@ -18,6 +18,10 @@ class EmployeeRepository {
   async update (payload) {
     return schema.updateOne(payload)
   }
+
+  async delete (id) {
+    return schema.deleteOne(id)
+  }
 }
 
 module.exports = new EmployeeRepository()
