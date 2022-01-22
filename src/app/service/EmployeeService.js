@@ -28,6 +28,12 @@ class EmployeeService {
     const result = await EmployeeRepository.findAll(employee)
     return result
   }
+
+  async delete (id) {
+    const result = await this.findById(id)
+    await EmployeeRepository.delete(result)
+    return result
+  }
 }
 
 module.exports = new EmployeeService()
