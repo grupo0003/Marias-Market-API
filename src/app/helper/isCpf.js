@@ -2,7 +2,7 @@ function isValid (cpfNumber) {
   let sum = 0
   let rest
 
-  if (cpfNumber === '00000000000' || cpfNumber.length !== 11) return false
+  if (cpfNumber === '00000000000' && cpfNumber.length !== 11) return false
 
   for (let i = 1; i <= 9; i++) sum = sum + parseInt(cpfNumber.substring(i - 1, i)) * (11 - i)
   rest = (sum * 10) % 11
