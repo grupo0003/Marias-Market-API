@@ -3,7 +3,7 @@ const EmployeeService = require('../service/EmployeeService')
 class EmployeeController {
   async create (req, res) {
     const { name, cpf, office, birthday } = req.body
-    try {
+    try { 
       const result = await EmployeeService.create({ name, cpf, office, birthday })
       return res.status(201).json(result)
     } catch (error) {
@@ -24,12 +24,19 @@ class EmployeeController {
 
   async list (req, res) {
     const payload = req.query
-    try {
-      const result = await EmployeeService.findAll(payload)
-      return res.status(200).json(result)
-    } catch (error) {
-      return res.status(500).json({ message: error.message })
-    }
+
+    const employees = await EmployeeService.findAll({
+      employee_id: payload.id,
+      name: payload.name,
+      cpf: payload.cpf,
+      bithday: payload.birthday,
+      office: payload.office,
+      situation: payload.situation
+    })
+
+    res.status(200).json({
+      employees: employees
+    })
   }
 
   async delete (req, res) {
