@@ -35,7 +35,7 @@ class EmployeeService {
     })
     return employees
   }
-  
+
   async delete (id) {
     const result = await this.findById(id)
     await EmployeeRepository.delete(result)
