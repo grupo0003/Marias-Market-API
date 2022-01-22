@@ -1,3 +1,4 @@
+
 const EmployeeRepository = require('../repository/EmployeeRepository')
 
 class EmployeeService {
@@ -24,9 +25,16 @@ class EmployeeService {
     return employee
   }
 
-  async findAll (employee) {
-    const result = await EmployeeRepository.findAll(employee)
-    return result
+  async findAll (payload) {
+    const employees = await EmployeeRepository.findAll({
+      employee_id: payload.employee_id,
+      name: new RegExp(payload.name, 'i'),
+      cpf: payload.cpf,
+      office: payload.office,
+      birthday: payload.birthday,
+      situation: payload.situation
+    })
+    return employees
   }
 }
 

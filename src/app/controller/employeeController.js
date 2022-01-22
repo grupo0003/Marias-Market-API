@@ -31,12 +31,19 @@ class EmployeeController {
 
   async list (req, res) {
     const payload = req.query
-    try {
-      const result = await EmployeeService.findAll(payload)
-      return res.status(200).json(result)
-    } catch (error) {
-      return res.status(500).json({ message: error.message })
-    }
+
+    const employees = await EmployeeService.findAll({
+      employee_id: payload.id,
+      name: payload.name,
+      cpf: payload.cpf,
+      bithday: payload.birthday,
+      office: payload.office,
+      situation: payload.situation
+    })
+
+    res.status(200).json({
+      employees: employees
+    })
   }
 }
 
