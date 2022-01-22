@@ -14,7 +14,9 @@ class ProductService {
       price: {
         min: payload.min_price,
         max: payload.max_price
-      }
+      },
+      limit: (payload.limit) ? Number(payload.limit) : undefined,
+      skip: (payload.skip) ? Number(payload.skip) : undefined
     })
 
     return products

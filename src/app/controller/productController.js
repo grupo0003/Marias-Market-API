@@ -9,12 +9,12 @@ class ProductController {
       name: payload.name,
       category: payload.category,
       min_price: payload.min_price,
-      max_price: payload.max_price
+      max_price: payload.max_price,
+      limit: payload.limit,
+      skip: payload.skip
     })
 
-    res.status(200).json({
-      products: products
-    })
+    res.status(200).json(products)
   }
 }
 
