@@ -3,14 +3,7 @@ const EmployeeService = require('../service/EmployeeService')
 class EmployeeController {
   async create (req, res) {
     const { name, cpf, office, birthday } = req.body
-    const validCpf = EmployeeController.validCpf(req.body.cpf)
-    try {
-      if (validCpf === true) {
-        const result = await EmployeeService.create({ name, cpf, office, birthday })
-        return res.status(201).json(result)
-      } else {
-        res.json({ mensagem: `o CPF ${req.body.cpf} não é válido` })
-      }
+    try { 
       const result = await EmployeeService.create({ name, cpf, office, birthday })
       return res.status(201).json(result)
     } catch (error) {
