@@ -31,23 +31,21 @@ class EmployeeController {
       cpf: payload.cpf,
       bithday: payload.birthday,
       office: payload.office,
-      situation: payload.situation
+      situation: payload.situation,
+      limit: payload.limit,
+      skip: payload.skip
     })
 
-    res.status(200).json({
-      employees: employees
-    })
+    res.status(200).json({ employees })
   }
 
   async delete (req, res) {
     const { id } = req.params
     try {
       await EmployeeService.delete(id)
-      return res.status(204).end()
+      return res.status(204).json({ message: `id ${id} Deleted` })
     } catch (error) {
-      return res.status(500).json({ message: error.message })
+      return res.status(404).json({ message: `id ${id} Not founded` })
     }
   }
 }
-
-module.exports = new EmployeeController()
