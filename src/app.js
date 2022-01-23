@@ -3,6 +3,7 @@ const EntityNotFound = require('./app/errors/entityNotFound')
 
 const Database = require('./infra/database/mongo/index')
 const routes = require('./routes/index')
+const EmployeeRouter = require('./routes/v1/employeeRouter')
 
 class App {
   static async init () {
@@ -29,11 +30,19 @@ class App {
       } else {
         res.status(500).json(err.message)
       }
+
+      this.express.use((req, res, next) => {
+        res.set('Acess-Control-Allow-Origin', '*')
+        next()
+      })
+
+      this.routes()
     })
   }
 
   routes () {
     this.express.use('/api/', routes)
+    this.express.use('/api', EmployeeRouter)
   }
 }
 
