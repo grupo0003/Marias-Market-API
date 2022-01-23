@@ -16,7 +16,7 @@ class EmployeeRepository {
     clearObject(payload)
 
     const filter = {
-      $: [{ ...payload }
+      $and: [{ ...payload }
       ]
     }
     const count = await schema.count(filter)
