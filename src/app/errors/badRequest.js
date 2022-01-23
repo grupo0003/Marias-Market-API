@@ -1,8 +1,11 @@
 const HttpError = require('./httpError')
 
 class BadRequest extends HttpError {
-  constructor (message) {
-    super(400, message)
+  constructor ({ details }) {
+    super(400, 'Server dont understand request')
+
+    this.name = 'Bad Request'
+    this.body = { details }
   }
 }
 

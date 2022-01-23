@@ -1,8 +1,8 @@
-const HttpError = require('./httpError')
-
-class EntityNotFound extends HttpError {
+class EntityNotFound extends Error {
   constructor (message) {
-    super(404, message)
+    super(message)
+
+    this.name = 'Entity Not Found'
   }
 }
 
