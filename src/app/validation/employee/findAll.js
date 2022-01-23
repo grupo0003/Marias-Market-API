@@ -38,11 +38,11 @@ module.exports = async (req, res, next) => {
             }
           }
         ),
-      limit: Joi.number(),
-      skip: Joi.number()
+      limit: Joi.number().min(1),
+      skip: Joi.number().min(0)
     })
 
-    const { error } = await schema.validate(req.params, { abortEarl: true })
+    const { error } = await schema.validate(req.query, { abortEarl: true })
 
     if (error) throw error
     return next()
