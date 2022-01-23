@@ -105,6 +105,8 @@ Exemplo:
 
 ### 🐋 Usando o Docker (opicional)
 
+> ⚠ Se opitar por usar o docker não precisa fazer o arquivo `.env` do [Conectando com o MongoDb](#-conectando-com-o-mongodb-database)
+
 ```bash
 # Sobe a aplicação em modo produção
 $ npm run docker:up
@@ -118,6 +120,7 @@ $ npm run docker:up:dev
 # Derruba os containers em modo de desenvolvimento
 $ npm run docker:down
 ```
+
 
 <br>
 
