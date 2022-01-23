@@ -39,21 +39,21 @@ describe('Feature tests', () => {
     })
 
     entities.products.p1 = await ProductService.create({
-      employee_id: entities.employees.p1,
+      employee_id: entities.employees.e1,
       name: 'Notebook',
       category: 'eletronico',
       price: 1099.99
     })
 
     entities.products.p2 = await ProductService.create({
-      employee_id: entities.employees.p1,
+      employee_id: entities.employees.e1,
       name: 'Smartphone',
       category: 'eletronico',
       price: 599.99
     })
 
     entities.products.p3 = await ProductService.create({
-      employee_id: entities.employees.p2,
+      employee_id: entities.employees.e2,
       name: 'TV',
       category: 'eletronico',
       price: 599.99
@@ -246,20 +246,20 @@ describe('Feature tests', () => {
     })
   })
 
-  describe(`POST ${prefix}/employee - Create`, () => {
-    const url = `${prefix}/employee`
+  describe(`POST ${prefix}/product - Create`, () => {
+    const url = `${prefix}/product`
 
     it('Should return sucess create product with correctly body', async () => {
       const res = await supertest(app)
         .post(url)
         .send({
-          employee_id: entities.employees.e1,
+          employee_id: entities.employees.e1._id,
           name: 'Mouse',
           category: 'eletronico',
           price: 10
         })
 
-      expect(res.statusCode).toBe(204)
+      expect(res.statusCode).toBe(201)
       expect(res.body.name).toBe('Mouse')
     })
 
@@ -273,20 +273,20 @@ describe('Feature tests', () => {
           price: 10
         })
 
-      expect(res.statusCode).toBe(400)
+      expect(res.statusCode).toBe(404)
     })
 
-    it('Should throw bad request when pass employee_id that dont exists', async () => {
+    it('Should throw bad request when pass invalid price', async () => {
       const res = await supertest(app)
         .post(url)
         .send({
-          employee_id: '51ad902d-d59f-43e5-a129-1cd76992bb9d',
+          employee_id: entities.employees.e1._id,
           name: 'Mouse',
           category: 'eletronico',
-          price: 10
+          price: 'invalid-price'
         })
 
-      expect(res.statusCode).toBe(404)
+      expect(res.statusCode).toBe(400)
     })
   })
 })
