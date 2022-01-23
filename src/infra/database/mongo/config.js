@@ -14,6 +14,8 @@ Object.keys(config).forEach(key => {
   }
 })
 
-config.uri = `${config.drive}://${config.user}:${config.pass}@${config.host}${(config.drive === 'mongodb') ? `:${config.port}` : ''}/${config.database}?authSource=admin`
+config.uri = () => {
+  return `${config.drive}://${config.user}:${config.pass}@${config.host}${(config.drive === 'mongodb') ? `:${config.port}` : ''}/${config.database}?authSource=admin`
+}
 
 module.exports = config
