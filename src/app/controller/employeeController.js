@@ -18,7 +18,7 @@ class EmployeeController {
     const updateEmployee = req.body
     try {
       const employee = await EmployeeService.update(id, updateEmployee)
-      if (!id) throw new EntityNotFound(`Can't be updated with "id" ${req.params.id}`)
+      if (!employee) throw new EntityNotFound(`Can't be updated with "id" ${req.params.id}`)
       return res.status(201).json(employee)
     } catch (error) {
       next(error)
@@ -46,7 +46,7 @@ class EmployeeController {
     const { id } = req.params
     try {
       await EmployeeService.delete(id)
-      return res.status(201).json({ message: `id ${id} Deleted` })
+      return res.status(204).end()
     } catch (error) {
       return res.status(404).json({ message: `id ${id} Not found` })
     }
