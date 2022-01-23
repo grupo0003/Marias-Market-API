@@ -5,12 +5,12 @@ const erroHandler = require('./app/middlewares/erroHandler')
 const routes = require('./routes/index')
 
 class App {
-  static async init () {
+  static async init (env) {
     if (!this._app) {
       this._app = new App()
       this._app.express = express()
 
-      await Database.init()
+      await Database.init(env)
 
       this._app.middlewares()
       this._app.routes()

@@ -1,0 +1,31 @@
+version: '3.0'
+
+networks:
+  compass:
+    driver: bridge
+
+services:
+  mongo:
+    image: mongo:4.2
+    networks:
+      - compass
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASS}
+      MONGO_INITDB_DATABASE: ${DB_DATABASE}
+    command: mongod --port ${DB_PORT:-27017}
+
+  app:
+    image: node:16.13.2
+    volumes:
+      - '.:/app/'
+    working_dir: /app/
+    depends_on:
+      - mongo
+    networks:
+      - compass
+    env_file:
+      - .env
+    ports:
+      - ${PORT}:${PORT}
+    command: npm run test
