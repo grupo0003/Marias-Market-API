@@ -39,12 +39,12 @@ class EmployeeController {
         cpf: payload.cpf,
         bithday: payload.birthday,
         office: payload.office,
-        situation: payload.situation
+        situation: payload.situation,
+        limit: payload.limit,
+        skip: payload.skip
       })
 
-      res.status(200).json({
-        employees: employees
-      })
+      res.status(200).json(employees)
     } catch (error) {
       next(error)
     }
