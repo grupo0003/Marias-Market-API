@@ -245,4 +245,48 @@ describe('Feature tests', () => {
       expect(res.statusCode).toBe(400)
     })
   })
+
+  describe(`POST ${prefix}/employee - Create`, () => {
+    const url = `${prefix}/employee`
+
+    it('Should return sucess create product with correctly body', async () => {
+      const res = await supertest(app)
+        .post(url)
+        .send({
+          employee_id: entities.employees.e1,
+          name: 'Mouse',
+          category: 'eletronico',
+          price: 10
+        })
+
+      expect(res.statusCode).toBe(204)
+      expect(res.body.name).toBe('Mouse')
+    })
+
+    it('Should throw bad request when pass employee_id that dont exists', async () => {
+      const res = await supertest(app)
+        .post(url)
+        .send({
+          employee_id: '51ad902d-d59f-43e5-a129-1cd76992bb9d',
+          name: 'Mouse',
+          category: 'eletronico',
+          price: 10
+        })
+
+      expect(res.statusCode).toBe(400)
+    })
+
+    it('Should throw bad request when pass employee_id that dont exists', async () => {
+      const res = await supertest(app)
+        .post(url)
+        .send({
+          employee_id: '51ad902d-d59f-43e5-a129-1cd76992bb9d',
+          name: 'Mouse',
+          category: 'eletronico',
+          price: 10
+        })
+
+      expect(res.statusCode).toBe(404)
+    })
+  })
 })
