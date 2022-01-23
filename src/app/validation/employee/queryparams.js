@@ -1,4 +1,6 @@
 const Joi = require('joi')
+
+const BadRequest = require('../../errors/http/badRequest')
 const isUUID = require('../../helper/isUUID')
 
 module.exports = async (req, res, next) => {
@@ -8,7 +10,7 @@ module.exports = async (req, res, next) => {
         .custom(
           (value, help) => {
             if (!isUUID.v4(value)) {
-              return help.message('invalid UUID')
+              return help.message('Param ID is a UUID v4 invalid.')
             } else {
               return true
             }
@@ -19,9 +21,12 @@ module.exports = async (req, res, next) => {
 
     const { error } = await schema.validate(req.params, { abortEarl: true })
 
-    if (error) throw error
-    return next()
+    if (error) {
+      throw new BadRequest({ details: error.details.map(err => err.message) })
+    }
+
+    next()
   } catch (error) {
-    return res.status(400).json(error)
+    next(error)
   }
 }

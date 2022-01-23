@@ -1,13 +1,31 @@
 const EmployeeRepository = require('../repository/EmployeeRepository')
+const EntityNotFound = require('../errors/entityNotFound')
+const DuplicateEntry = require('../errors/duplicateEntry')
 
 class EmployeeService {
   async create (employee) {
-    const result = await EmployeeRepository.create(employee)
-    return result
+    try {
+      const result = await EmployeeRepository.create(employee)
+      return result
+    } catch (error) {
+      if (error.name === 'MongoServerError' && error.code === 11000) {
+        throw new DuplicateEntry(
+          'Employee',
+          Object.keys(error.keyPattern).map(key => key)
+        )
+      } else {
+        throw error
+      }
+    }
   }
 
   async findById (id) {
     const employee = await EmployeeRepository.findById(id)
+
+    if (employee === null) {
+      throw new EntityNotFound(`Cannot find employee with id = '${id}'`)
+    }
+
     return employee
   }
 

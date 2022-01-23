@@ -1,4 +1,6 @@
 const Joi = require('joi')
+
+const BadRequest = require('../../errors/http/badRequest')
 const isUUID = require('../../helper/isUUID')
 
 module.exports = async (req, res, next) => {
@@ -10,7 +12,7 @@ module.exports = async (req, res, next) => {
       category: Joi.string()
         .required(),
 
-      price: Joi.string()
+      price: Joi.number()
         .required(),
 
       employee_id: Joi.string()
@@ -28,9 +30,12 @@ module.exports = async (req, res, next) => {
 
     const { error } = await schema.validate(req.body, { abortEarl: true })
 
-    if (error) throw error
-    return next()
+    if (error) {
+      throw new BadRequest({ details: error.details.map(err => err.message) })
+    }
+
+    next()
   } catch (error) {
-    return res.status(400).json(error)
+    next(error)
   }
 }

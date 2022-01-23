@@ -1,6 +1,7 @@
 const express = require('express')
 
 const Database = require('./infra/database/mongo/index')
+const erroHandler = require('./app/middlewares/erroHandler')
 const routes = require('./routes/index')
 
 class App {
@@ -13,6 +14,7 @@ class App {
 
       this._app.middlewares()
       this._app.routes()
+      this._app.erroHandler()
     }
 
     return this._app.express
@@ -25,6 +27,10 @@ class App {
 
   routes () {
     this.express.use('/api/', routes)
+  }
+
+  erroHandler () {
+    this.express.use(erroHandler)
   }
 }
 

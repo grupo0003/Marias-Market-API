@@ -1,4 +1,5 @@
 const router = require('express').Router()
+
 const EmployeeController = require('../../app/controller/employeeController')
 const createValidate = require('../../app/validation/employee/create')
 const updateValidate = require('../../app/validation/employee/update')

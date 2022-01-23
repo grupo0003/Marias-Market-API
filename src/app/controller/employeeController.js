@@ -1,51 +1,72 @@
 const EmployeeService = require('../service/EmployeeService')
 
+const EntityNotFound = require('../errors/entityNotFound')
+const DuplicateEntry = require('../errors/duplicateEntry')
+const BadRequest = require('../errors/http/badRequest')
+const NotFound = require('../errors/http/notFound')
+
 class EmployeeController {
-  async create (req, res) {
+  async create (req, res, next) {
     const { name, cpf, office, birthday } = req.body
     try {
       const result = await EmployeeService.create({ name, cpf, office, birthday })
       return res.status(201).json(result)
     } catch (error) {
-      return res.status(500).json({ message: error.message })
+      if (error instanceof DuplicateEntry) {
+        next(new BadRequest({ details: error.entrys }))
+      }
+
+      next(error)
     }
   }
 
-  async update (req, res) {
+  async update (req, res, next) {
     const { id } = req.params
     const updateEmployee = req.body
     try {
       const employee = await EmployeeService.update(id, updateEmployee)
-      return res.status(201).json(employee)
+      return res.status(200).json(employee)
     } catch (error) {
-      return res.status(500).json(error.message)
+      if (error instanceof EntityNotFound) {
+        next(new NotFound(error.message))
+      }
+
+      next(error)
     }
   }
 
-  async list (req, res) {
-    const payload = req.query
+  async list (req, res, next) {
+    try {
+      const payload = req.query
 
-    const employees = await EmployeeService.findAll({
-      employee_id: payload.id,
-      name: payload.name,
-      cpf: payload.cpf,
-      bithday: payload.birthday,
-      office: payload.office,
-      situation: payload.situation,
-      limit: payload.limit,
-      skip: payload.skip
-    })
+      const employees = await EmployeeService.findAll({
+        employee_id: payload.id,
+        name: payload.name,
+        cpf: payload.cpf,
+        bithday: payload.birthday,
+        office: payload.office,
+        situation: payload.situation,
+        limit: payload.limit,
+        skip: payload.skip
+      })
 
-    res.status(200).json({ employees })
+      res.status(200).json(employees)
+    } catch (error) {
+      next(error)
+    }
   }
 
-  async delete (req, res) {
+  async delete (req, res, next) {
     const { id } = req.params
     try {
       await EmployeeService.delete(id)
-      return res.status(204).json({ message: `id ${id} Deleted` })
+      return res.status(204).end()
     } catch (error) {
-      return res.status(404).json({ message: `id ${id} Not founded` })
+      if (error instanceof EntityNotFound) {
+        next(new NotFound(error.message))
+      }
+
+      next(error)
     }
   }
 }
