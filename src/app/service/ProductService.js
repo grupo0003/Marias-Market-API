@@ -1,8 +1,15 @@
 const ProductRepository = require('../repository/ProductRepository')
+const EmployeeService = require('../service/EmployeeService')
 
 class ProductService {
-  async create (product) {
-    const result = await ProductRepository.create(product)
+  async create ({ employee_id: employeId, ...product }) {
+    const employee = await EmployeeService.findById(employeId)
+
+    const result = await ProductRepository.create({
+      employee_id: employee,
+      ...product
+    })
+
     return result
   }
 

@@ -1,3 +1,5 @@
+const EntityNotFound = require('../errors/entityNotFound')
+const NotFound = require('../errors/http/notFound')
 const ProductService = require('../service/ProductService')
 
 class ProductController {
@@ -17,13 +19,23 @@ class ProductController {
     res.status(200).json(products)
   }
 
-  async create (req, res) {
+  async create (req, res, next) {
     const { name, category, price, employee_id: employeId } = req.body
     try {
-      const result = await ProductService.create({ name, category, price, employeId })
-      return res.status(201).json(result)
+      const result = await ProductService.create({
+        name,
+        category,
+        price,
+        employee_id: employeId
+      })
+
+      res.status(201).json(result)
     } catch (error) {
-      return res.status(500).json({ message: error.message })
+      if (error instanceof EntityNotFound) {
+        next(new NotFound(error.message))
+      } else {
+        next(error)
+      }
     }
   }
 }
