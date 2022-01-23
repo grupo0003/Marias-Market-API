@@ -31,6 +31,7 @@ module.exports = async (req, res, next) => {
       situation: Joi.string()
         .default('activate')
     })
+
     const { error } = await schema.validate(req.body, { abortEarl: true })
 
     if (error) {
