@@ -241,7 +241,7 @@ Obrigado mais uma vez e vamos para o próxima!!`#dreamBigger🚀💛`<br>
       <a href="https://github.com/Felipbdc">
         <img width="168" height="140" src="https://user-images.githubusercontent.com/82064724/150272230-4ad07920-192d-4a0f-9e37-1514c116f317.png" > <p align="left">                                
 </p></a>
-     <p align="center">Scrum master-dev</p> 
+     <p align="center">SM-CR-dev</p> 
     </td>
      <td>
       <a href="https://github.com/leoBarrosDev">
