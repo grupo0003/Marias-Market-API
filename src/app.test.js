@@ -145,7 +145,7 @@ describe('Feature tests', () => {
     })
   })
 
-  describe(`DELETE ${prefix}/employee - Delete`, () => {
+  describe(`DELETE ${prefix}/employee/:id - Delete`, () => {
     const url = `${prefix}/employee`
 
     it('Should sucess when pass id correctly and valid', async () => {
@@ -167,6 +167,21 @@ describe('Feature tests', () => {
         .delete(`${url}/3fed4e1e-a604-4c88-ac6e-d02851b74d22`)
 
       expect(res.statusCode).toBe(404)
+    })
+  })
+
+  describe(`PUT ${prefix}/employee/:id - Update`, () => {
+    const url = `${prefix}/employee`
+
+    it('Should sucess when id and body correctly', async () => {
+      const res = await supertest(app)
+        .put(`${url}/${entities.employees.e2._id}`)
+        .send({
+          name: 'João de Melo'
+        })
+
+      expect(res.statusCode).toBe(200)
+      expect(res.body.name).toBe('João de Melo')
     })
   })
 })
