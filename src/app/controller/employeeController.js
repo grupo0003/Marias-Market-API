@@ -3,7 +3,7 @@ const EmployeeService = require('../service/EmployeeService')
 class EmployeeController {
   async create (req, res) {
     const { name, cpf, office, birthday } = req.body
-    try { 
+    try {
       const result = await EmployeeService.create({ name, cpf, office, birthday })
       return res.status(201).json(result)
     } catch (error) {
@@ -43,9 +43,9 @@ class EmployeeController {
     const { id } = req.params
     try {
       await EmployeeService.delete(id)
-      return res.status(204).json({ message: `id ${id} Deleted` })
+      return res.status(204).end()
     } catch (error) {
-      return res.status(404).json({ message: `id ${id} Not founded` })
+      return res.status(500).json({ message: error.message })
     }
   }
 }

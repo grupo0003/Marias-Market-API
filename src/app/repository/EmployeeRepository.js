@@ -1,4 +1,5 @@
 const schema = require('../schema/employeeSchema')
+const clearObject = require('../helper/clearObject')
 
 class EmployeeRepository {
   async create (employee) {
@@ -12,7 +13,8 @@ class EmployeeRepository {
   }
 
   async findAll (employee) {
-    return schema.find()
+    clearObject(employee)
+    return schema.find(employee)
   }
 
   async update (payload) {
