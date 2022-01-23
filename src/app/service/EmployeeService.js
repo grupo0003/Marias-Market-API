@@ -31,11 +31,13 @@ class EmployeeService {
       cpf: payload.cpf,
       office: payload.office,
       birthday: payload.birthday,
-      situation: payload.situation
+      situation: payload.situation,
+      limit: (payload.limit) ? Number(payload.limit) : undefined,
+      skip: (payload.skip) ? Number(payload.skip) : undefined
     })
     return employees
   }
-  
+
   async delete (id) {
     const result = await this.findById(id)
     await EmployeeRepository.delete(result)

@@ -3,7 +3,7 @@ const EmployeeService = require('../service/EmployeeService')
 class EmployeeController {
   async create (req, res) {
     const { name, cpf, office, birthday } = req.body
-    try { 
+    try {
       const result = await EmployeeService.create({ name, cpf, office, birthday })
       return res.status(201).json(result)
     } catch (error) {
@@ -31,12 +31,12 @@ class EmployeeController {
       cpf: payload.cpf,
       bithday: payload.birthday,
       office: payload.office,
-      situation: payload.situation
+      situation: payload.situation,
+      limit: payload.limit,
+      skip: payload.skip
     })
 
-    res.status(200).json({
-      employees: employees
-    })
+    res.status(200).json({ employees })
   }
 
   async delete (req, res) {
