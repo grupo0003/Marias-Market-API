@@ -101,7 +101,11 @@ $ npm start
 Na pasta raiz do projeto crie um arquivo `.env` e passe a conexão do seu banco. <br>
 Exemplo:
 
-<img src="https://user-images.githubusercontent.com/82064724/150665409-e88dbb4b-835b-47e6-8046-3931d20a1ad4.PNG">
+```bash
+DB_USER=<user>
+DB_PASS=<pass>
+DB_DATABASE=desafio
+```
 
 ### 🐋 Usando o Docker (opicional)
 
@@ -119,7 +123,16 @@ $ npm run docker:up:dev
 $ npm run docker:down
 ```
 
- ⚠ Se opitar por usar o docker não precisa fazer o arquivo `.env` do [Conectando com o MongoDb](#-conectando-com-o-mongodb-database).
+ > ⚠ Atenção!! <br> O arquivo `.env` deve ser este caso opite por usar o docker:
+ 
+ ```bash
+DB_DRIVE=admin
+DB_HOST=admin
+DB_PORT=admin
+DB_USER=admin
+DB_PASS=admin
+DB_DATABASE=desafio
+```
 
 <br>
 
