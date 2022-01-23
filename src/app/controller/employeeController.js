@@ -43,9 +43,9 @@ class EmployeeController {
     const { id } = req.params
     try {
       await EmployeeService.delete(id)
-      return res.status(201).json({ message: `id ${id} Deleted` })
+      return res.status(204).end()
     } catch (error) {
-      return res.status(404).json({ message: `id ${id} Not found` })
+      return res.status(500).json({ message: error.message })
     }
   }
 }
