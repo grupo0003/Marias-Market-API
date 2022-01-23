@@ -233,7 +233,7 @@ Obrigado mais uma vez e vamos para o próxima!!`#dreamBigger🚀💛`<br>
     </td>
    <td>
       <a href="https://github.com/diogo-alexandre">
-        <img width="168" height="140" src="https://img.estadao.com.br/thumbs/640/resources/jpg/7/8/1508444708187.jpg" > <p align="left">                               
+        <img width="168" height="140" src="https://user-images.githubusercontent.com/82064724/150702309-fcca4e25-45dd-484f-a3be-7f8dbdf57b84.jpeg" > <p align="left">                               
 </p></a>
     <p align="center"> QA - dev</p> 
     </td>
