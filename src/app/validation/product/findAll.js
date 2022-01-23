@@ -10,7 +10,6 @@ module.exports = async (req, res, next) => {
 
       price: Joi.number(),
 
-      situation: Joi.string(),
       employee_id: Joi.string()
         .custom(
           (value, help) => {
