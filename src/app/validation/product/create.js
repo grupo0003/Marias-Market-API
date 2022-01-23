@@ -1,6 +1,6 @@
 const Joi = require('joi')
 
-const BadRequest = require('../../errors/badRequest')
+const BadRequest = require('../../errors/http/badRequest')
 const isUUID = require('../../helper/isUUID')
 
 module.exports = async (req, res, next) => {

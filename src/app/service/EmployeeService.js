@@ -1,4 +1,5 @@
 const EmployeeRepository = require('../repository/EmployeeRepository')
+const EntityNotFound = require('../errors/entityNotFound')
 
 class EmployeeService {
   async create (employee) {
@@ -8,6 +9,11 @@ class EmployeeService {
 
   async findById (id) {
     const employee = await EmployeeRepository.findById(id)
+
+    if (employee === null) {
+      throw new EntityNotFound(`Cannot find employee with id = '${id}'`)
+    }
+
     return employee
   }
 

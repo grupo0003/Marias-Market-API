@@ -2,7 +2,7 @@ const JoiDate = require('@joi/date')
 const Joi = require('joi').extend(JoiDate)
 
 const isCpf = require('../../helper/isCpf')
-const BadRequest = require('../../errors/badRequest')
+const BadRequest = require('../../errors/http/badRequest')
 
 module.exports = async (req, res, next) => {
   try {

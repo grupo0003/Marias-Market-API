@@ -1,5 +1,8 @@
 const EmployeeService = require('../service/EmployeeService')
 
+const EntityNotFound = require('../errors/entityNotFound')
+const NotFound = require('../errors/http/notFound')
+
 class EmployeeController {
   async create (req, res, next) {
     const { name, cpf, office, birthday } = req.body
@@ -18,6 +21,10 @@ class EmployeeController {
       const employee = await EmployeeService.update(id, updateEmployee)
       return res.status(200).json(employee)
     } catch (error) {
+      if (error instanceof EntityNotFound) {
+        next(new NotFound(error.message))
+      }
+
       next(error)
     }
   }
@@ -49,6 +56,10 @@ class EmployeeController {
       await EmployeeService.delete(id)
       return res.status(204).end()
     } catch (error) {
+      if (error instanceof EntityNotFound) {
+        next(new NotFound(error.message))
+      }
+
       next(error)
     }
   }

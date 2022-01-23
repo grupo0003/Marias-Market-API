@@ -1,4 +1,4 @@
-const HttpError = require('../errors/httpError')
+const HttpError = require('../errors/http/httpError')
 
 module.exports = function (err, req, res, next) {
   if (err instanceof HttpError) {
@@ -6,9 +6,11 @@ module.exports = function (err, req, res, next) {
       message: err.name,
       ...err.body
     })
-  }
+  } else {
+    console.log(err)
 
-  res.status(500).json({
-    message: 'Internal Server Error'
-  })
+    res.status(500).json({
+      message: 'Internal Server Error'
+    })
+  }
 }
