@@ -144,4 +144,29 @@ describe('Feature tests', () => {
       expect(res.statusCode).toBe(400)
     })
   })
+
+  describe(`DELETE ${prefix}/employee - Delete`, () => {
+    const url = `${prefix}/employee`
+
+    it('Should sucess when pass id correctly and valid', async () => {
+      const res = await supertest(app)
+        .delete(`${url}/${entities.employees.e3._id}`)
+
+      expect(res.statusCode).toBe(204)
+    })
+
+    it('Should throw bad request when pass incorrectly id', async () => {
+      const res = await supertest(app)
+        .delete(`${url}/invalid-id`)
+
+      expect(res.statusCode).toBe(400)
+    })
+
+    it('Should throw not found when pass id that dont exists in db', async () => {
+      const res = await supertest(app)
+        .delete(`${url}/3fed4e1e-a604-4c88-ac6e-d02851b74d22`)
+
+      expect(res.statusCode).toBe(404)
+    })
+  })
 })
