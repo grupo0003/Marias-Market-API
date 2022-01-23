@@ -22,7 +22,7 @@ services:
     networks:
       - compass
     env_file:
-      - .env
+      - .env.production
     ports:
       - ${PORT}:${PORT}
     command: npm run start
