@@ -64,9 +64,9 @@ class EmployeeController {
     } catch (error) {
       if (error instanceof EntityNotFound) {
         next(new NotFound(error.message))
+      } else {
+        next(error)
       }
-
-      next(error)
     }
   }
 }

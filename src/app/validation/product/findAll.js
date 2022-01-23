@@ -1,36 +1,16 @@
-const JoiDate = require('@joi/date')
-const Joi = require('joi').extend(JoiDate)
+const Joi = require('joi')
+const isUUID = require('../../helper/isUUID')
 
 const BadRequest = require('../../errors/http/badRequest')
-const isCpf = require('../../helper/isCpf')
-const isUUID = require('../../helper/isUUID')
 
 module.exports = async (req, res, next) => {
   try {
     const schema = Joi.object({
       name: Joi.string(),
 
-      cpf: Joi.string()
-        .min(11)
-        .max(11)
-        .custom((value, help) => {
-          if (isCpf(value)) {
-            return help.message('Cpf inválido')
-          } else {
-            return true
-          }
-        }),
+      category: Joi.string(),
 
-      office: Joi.string()
-        .valid('gerente', 'vendedor', 'caixa'),
-
-      birthday: Joi.date()
-        .max('now')
-        .format('DD/MM/YYYY')
-        .max('now'),
-
-      situation: Joi.string()
-        .valid('activate', 'deactivate'),
+      price: Joi.number(),
 
       employee_id: Joi.string()
         .custom(
