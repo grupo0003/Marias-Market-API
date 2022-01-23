@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./src/server.js",
     "dev": "nodemon ./src/server.js",
-    "test": "jest",
+    "test": "jest -i",
     "docker:up:test": "docker-compose -f ./docker-compose.test.yml up",
     "docker:down:test": "docker-compose -f ./docker-compose.test.yml down"
   },

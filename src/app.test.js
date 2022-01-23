@@ -175,13 +175,37 @@ describe('Feature tests', () => {
 
     it('Should sucess when id and body correctly', async () => {
       const res = await supertest(app)
-        .put(`${url}/${entities.employees.e2._id}`)
+        .put(`${url}/${entities.employees.e1._id}`)
         .send({
           name: 'João de Melo'
         })
 
       expect(res.statusCode).toBe(200)
       expect(res.body.name).toBe('João de Melo')
+    })
+
+    it('Should throw not found when pass id that dont exists', async () => {
+      const res = await supertest(app)
+        .put(`${url}/51ad902d-d59f-43e5-a129-1cd76992bb9d`)
+
+      expect(res.statusCode).toBe(404)
+    })
+
+    it('Should throw bad request when pass invalid uuid v4', async () => {
+      const res = await supertest(app)
+        .put(`${url}/invalid-uuid-v4`)
+
+      expect(res.statusCode).toBe(400)
+    })
+
+    it('Should throw bad request when pass invalid body', async () => {
+      const res = await supertest(app)
+        .put(`${url}/${entities.employees.e1._id}`)
+        .send({
+          office: 'developer'
+        })
+
+      expect(res.statusCode).toBe(400)
     })
   })
 })

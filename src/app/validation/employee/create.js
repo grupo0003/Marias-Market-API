@@ -40,9 +40,8 @@ module.exports = async (req, res, next) => {
       throw new BadRequest({ details: error.details.map(err => err.message) })
     }
 
-    return next()
+    next()
   } catch (error) {
-    console.log(error)
     next(error)
   }
 }
