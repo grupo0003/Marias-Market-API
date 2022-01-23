@@ -1,4 +1,5 @@
 const express = require('express')
+const EntityNotFound = require('./app/errors/entityNotFound')
 
 const Database = require('./infra/database/mongo/index')
 const routes = require('./routes/index')
@@ -21,6 +22,14 @@ class App {
   middlewares () {
     this.express.use(express.urlencoded({ extended: true }))
     this.express.use(express.json())
+
+    this.express.use((err, req, res, next) => {
+      if (err instanceof EntityNotFound) {
+        res.status(404).end()
+      } else {
+        res.status(500).json(err.message)
+      }
+    })
   }
 
   routes () {

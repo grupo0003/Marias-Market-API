@@ -1,6 +1,7 @@
 const isCpf = require('../../helper/isCpf')
 const JoiDate = require('@joi/date')
 const Joi = require('joi').extend(JoiDate)
+const BadRequest = require('../../errors/badRequest')
 
 module.exports = async (req, res, next) => {
   try {
@@ -34,9 +35,9 @@ module.exports = async (req, res, next) => {
 
     const { error } = await schema.validate(req.body, { abortEarl: true })
 
-    if (error) throw error
+    if (error) throw new BadRequest()
     return next()
   } catch (error) {
-    return res.status(400).json(error)
+    next(error)
   }
 }

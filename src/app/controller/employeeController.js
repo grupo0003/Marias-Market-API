@@ -1,4 +1,6 @@
 const EmployeeService = require('../service/EmployeeService')
+// const BadRequest = require('../errors/badRequest')
+const EntityNotFound = require('../errors/entityNotFound')
 
 class EmployeeController {
   async create (req, res) {
@@ -11,14 +13,15 @@ class EmployeeController {
     }
   }
 
-  async update (req, res) {
+  async update (req, res, next) {
     const { id } = req.params
     const updateEmployee = req.body
     try {
       const employee = await EmployeeService.update(id, updateEmployee)
+      if (!id) throw new EntityNotFound(`Can't be updated with "id" ${req.params.id}`)
       return res.status(201).json(employee)
     } catch (error) {
-      return res.status(500).json(error.message)
+      next(error)
     }
   }
 
