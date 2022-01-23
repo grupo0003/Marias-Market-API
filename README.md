@@ -119,7 +119,7 @@ $ npm run docker:up:dev
 $ npm run docker:down
 ```
 
- ⚠ Se opitar por usar o docker não precisa fazer o arquivo `.env` do [Conectando com o MongoDb](#-conectando-com-o-mongodb-database)
+ ⚠ Se opitar por usar o docker não precisa fazer o arquivo `.env` do [Conectando com o MongoDb](#-conectando-com-o-mongodb-database).
 
 <br>
 
@@ -196,7 +196,7 @@ As seguintes ferramentas/tecnologias foram usadas na construção e testagem do 
 
 ## ✏ Contribuintes
 
-Obrigado a todos a cima que me ajudaram a entender o projeto, agradeço pela oportunidade. Garanto que essa api foi desenvolvida com todo meu máximo, me dediquei 100% ao projeto que infelizmente não foi concluido a tempo. Quero agradecer especiamente a Gabriel e Bruna por toda a atenção dada a mim no projeto.
+Nos do grupo 03 queremos agradecer a toda a equipe da compasso pelo suporte dado a nós ao decorrer desse programa de bolsas e desafios, é muito gratificante termos concluído o projeto dessa sprint, usando o trabalho em grupo e o scrum como metodologia para o desenvolvimento da aplicação.
 
 Obrigado mais uma vez e vamos para o próxima!!`#dreamBigger🚀💛`<br>
 
