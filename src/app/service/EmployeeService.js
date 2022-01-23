@@ -9,7 +9,7 @@ class EmployeeService {
 
   async findById (id) {
     const employee = await EmployeeRepository.findById(id)
-    if (id === null) throw new EntityNotFound(`Employee with id ${id} not found`)
+    if (employee === null) throw new EntityNotFound(`Employee with id ${id} not found`)
     return employee
   }
 
