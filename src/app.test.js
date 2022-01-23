@@ -208,4 +208,41 @@ describe('Feature tests', () => {
       expect(res.statusCode).toBe(400)
     })
   })
+
+  describe(`GET ${prefix}/product - Find All`, () => {
+    const url = `${prefix}/product`
+
+    it('Should return sucess when pass with no paramters', async () => {
+      const res = await supertest(app)
+        .get(url)
+
+      expect(res.statusCode).toBe(200)
+      expect(res.body.pageSize).toBe(3)
+    })
+
+    it('Should return sucess when pass with pagination', async () => {
+      const res = await supertest(app)
+        .get(url + '?limit=1')
+
+      expect(res.statusCode).toBe(200)
+      expect(res.body.pageSize).toBe(1)
+      expect(res.body.totalPages).toBe(3)
+    })
+
+    it('Should return sucess when pass with filters', async () => {
+      const res = await supertest(app)
+        .get(url + '?name=o')
+
+      expect(res.statusCode).toBe(200)
+      expect(res.body.pageSize).toBe(2)
+      expect(res.body.totalPages).toBe(1)
+    })
+
+    it('Should return bad request when pass with invalid params', async () => {
+      const res = await supertest(app)
+        .get(url + '?employee_id=ivalid-uuid-v4')
+
+      expect(res.statusCode).toBe(400)
+    })
+  })
 })
