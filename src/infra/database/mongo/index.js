@@ -3,7 +3,7 @@ const config = require('./config.js')
 
 class Database {
   static async init () {
-    return await mongoose.connect(config.uri)
+    return await mongoose.connect(config.uri())
   }
 }
 
