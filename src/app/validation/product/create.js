@@ -12,7 +12,7 @@ module.exports = async (req, res, next) => {
       category: Joi.string()
         .required(),
 
-      price: Joi.string()
+      price: Joi.number()
         .required(),
 
       employee_id: Joi.string()
