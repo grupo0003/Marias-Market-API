@@ -1,6 +1,8 @@
 const EmployeeService = require('../service/EmployeeService')
 
 const EntityNotFound = require('../errors/entityNotFound')
+const DuplicateEntry = require('../errors/duplicateEntry')
+const BadRequest = require('../errors/http/badRequest')
 const NotFound = require('../errors/http/notFound')
 
 class EmployeeController {
@@ -10,6 +12,10 @@ class EmployeeController {
       const result = await EmployeeService.create({ name, cpf, office, birthday })
       return res.status(201).json(result)
     } catch (error) {
+      if (error instanceof DuplicateEntry) {
+        next(new BadRequest({ details: error.entrys }))
+      }
+
       next(error)
     }
   }
