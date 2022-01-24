@@ -23,7 +23,7 @@ Vamos ao projeto! `#dreamBigger🚀💛`
  ## ℹ Indice
 <!--ts-->
    * [🧠 Contexto](#-Contexto)
-     * [Rotas](#-rotas) 
+     * [Rotas](#-rotas)
    * [💻 Baixar e executar o projeto](#-Baixar-e-executar-o-projeto)
      * [Rodando o Back End](#-rodando-o-back-end-servidor)
      * [Conectando com o MongoDb](#-conectando-com-o-mongodb-database)
@@ -38,29 +38,29 @@ Vamos ao projeto! `#dreamBigger🚀💛`
 <br>
 
  ---
- 
+
  ## 🧠 Contexto
 Neste desafio em grupo do programa de bolsas, será a criação de uma api de cadastro de funcionários e produtos. Neste projeto estamos incluído paginação na busca por funcionários e produtos, e fluxos de:
 
  * Interação de métodos http. (criar, buscar, editar e remover);
  * Query params nas rotas de buscar;
  * validações dos campos;
- 
+
  ### • Rotas:
 
 **- employee**
 
 | Id             | Request           | Endpoint                 |
-|--------------- | ------------------| -------------------------| 
-|1               | `POST`            | cadastrar um funcionário | 
-|2               | `GET`             | listar funcionários      | 
-|3               | `PUT`             | atualizar funcionários   | 
+|--------------- | ------------------| -------------------------|
+|1               | `POST`            | cadastrar um funcionário |
+|2               | `GET`             | listar funcionários      |
+|3               | `PUT`             | atualizar funcionários   |
 |4               | `DELETE`          | deletar funcionário      |
 
 **- product**
 
 | Id             | Request           | Endpoint                 |
-|--------------- | ------------------| -------------------------| 
+|--------------- | ------------------| -------------------------|
 |5               | `POST`            | cadastrar um produto     |
 |6               | `GET`             | listar produtos          |
 
@@ -73,13 +73,15 @@ Neste desafio em grupo do programa de bolsas, será a criação de uma api de ca
 ###  Pré-requisitos
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
-[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/), [Postman](https://www.postman.com/downloads/) e o banco de 
-dados [MongoDB](https://www.mongodb.com/pt-br). 
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/), [Postman](https://www.postman.com/downloads/) e [MongoDB](https://www.mongodb.com/pt-br).
 Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/).
 
-O [Docker](https://www.docker.com/products/docker-desktop) é opicional.
+O [Docker](https://www.docker.com/) é opicional. Mas caso opte por utilizalo, o [Node.js](https://nodejs.org/en/) e [MongoDB](https://www.mongodb.com/pt-br) viram opcionais.
 
-### 🎲 Rodando o Back End (servidor)
+### 🎲 Setup da aplicação
+
+#### 1. Clonando a aplicação localmente
+O primeiro passo para começar a configurar o servidor é clonar o repositório na sua máquina.
 
 ```bash
 # Clone este repositório
@@ -87,54 +89,70 @@ $ git clone <https://github.com/grupo0003/register-Employees-Products-.git>
 
 # Acesse a pasta do projeto no terminal
 $ cd register-Employees-Products-
-
-# Instale as dependências
-$ npm install
-
-# Execute a aplicação 
-$ npm start
-
-# O projeto inciará na porta:3000 - acesse <http://localhost:3000/api/v1/employee> no postman
 ```
 
-### 🔗 Conectando com o MongoDb (database)
-Na pasta raiz do projeto crie um arquivo `.env` e passe a conexão do seu banco. <br>
-Exemplo:
+#### 2. Configurar as variáveis de ambiente
+O servidor usa de variáveis de ambiente para transportar dados sensíveis pela aplicação.
+É necessário ter dois arquivos para guardar esses dados.
+`.env.development` e `.env.production`.
 
+Será necessário criar na raiz do projeto estes 2 arquivos e configurar as variáveis:
 ```bash
-DB_USER=<user>
-DB_PASS=<pass>
-DB_DATABASE=desafio
+# Porta que o servidor irá rodar.
+PORT=3000
+
+# Driver de conexão com o mongo.
+# Caso opte por MongoDB Cluster, DB_DRIVE = mongodb+srv
+DB_DRIVE=mongodb
+
+# Endereço do serviço do MongoDB
+# No docker, "mongo" é o endereço para fazer a
+# comunicação com o container do MongoDB
+DB_HOST=mongo
+
+# Este campo é opcional, valor padrão é 27017
+DB_PORT=27017
+
+# Usuário para se conectar com o MongoDB
+DB_USER=user
+
+# Senha para se conectar com o MongoDB
+DB_PASS=pass
+
+# Database que será guardada as Coleções
+DB_DATABASE=desafio-03
 ```
+Tanto `.env.development` como `.env.production` utilizam das mesmas variáveis.
 
-### 🐋 Usando o Docker (opicional)
+### 🔗 Iniciando a aplicação
+Depois de ter as variáveis de ambiente configuradas, basta iniciar o servidor.
 
+Para subir em modo `produção`, basta executar:
 ```bash
-# Sobe a aplicação em modo produção
+# Sem docker
+$ npm run start
+
+# Com docker
 $ npm run docker:up
+```
 
-# Derruba os containers em modo produção
-$ npm run docker:down
+Para subir em modo `desenvolvimento`:
+```bash
+# Sem docker
+$ npm run dev
 
-# Sobe a aplicação em modo de desenvolvimento
+# Com docker
 $ npm run docker:up:dev
-
-# Derruba os containers em modo de desenvolvimento
-$ npm run docker:down
 ```
 
- > ⚠ Atenção!! <br> O arquivo `.env` deve ser este caso opite por usar o docker:
- 
- ```bash
-DB_DRIVE=admin
-DB_HOST=admin
-DB_PORT=admin
-DB_USER=admin
-DB_PASS=admin
-DB_DATABASE=desafio
-```
+Para iniciar em todo de `test` (Teste de feature):
+```bash
+# Sem docker
+$ npm run test
 
-<br>
+# Com docker
+$ npm docker:up:test
+```
 
 ---
 
@@ -145,8 +163,8 @@ As seguintes ferramentas/tecnologias foram usadas na construção e testagem do 
 | logo               | Framework                  | Version      |
 | :----------------- | :------------------------- | :----------: |
 | <a href="https://nodejs.org/pt-br/download/" target="_blank"><img align="center" alt="nodeJs" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/2ae2a900d2f041da66e950e4d48052658d850630/icons/nodejs/nodejs-original.svg"></a>                   | NodeJs                     |  `16.13.1`      |
-| <a href="https://www.mongodb.com/try/download/community" target="_blank"><img align="center" alt="mongo" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/mongodb/mongodb-original.svg"></a>            | MongoDB                      |  `5.0.5`       | 
-| <a href="https://www.postman.com/downloads/" target="_blank"><img align="center" alt="postman" height="30" width="30" src="https://user-images.githubusercontent.com/82064724/147416090-89b4e7a3-2b78-417a-a154-f47940d23e38.png">            | Postman                    |  `9.6.2`       | 
+| <a href="https://www.mongodb.com/try/download/community" target="_blank"><img align="center" alt="mongo" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/mongodb/mongodb-original.svg"></a>            | MongoDB                      |  `5.0.5`       |
+| <a href="https://www.postman.com/downloads/" target="_blank"><img align="center" alt="postman" height="30" width="30" src="https://user-images.githubusercontent.com/82064724/147416090-89b4e7a3-2b78-417a-a154-f47940d23e38.png">            | Postman                    |  `9.6.2`       |
 | <a href="https://code.visualstudio.com/download" target="_blank"><img align="center" alt="VsCode" height="25" width="35" src="https://github.com/devicons/devicon/blob/master/icons/vscode/vscode-original.svg"></a> | VsCode | `1.63.2` |
 | <a href="https://nodejs.org/pt-br/download/" target="_blank"><img align="center" alt="docker" height="40" width="40" src="https://raw.githubusercontent.com/devicons/devicon/2ae2a900d2f041da66e950e4d48052658d850630/icons/docker/docker-original.svg"></a>|                             Docker|`xx.x.x`|
 
@@ -215,7 +233,7 @@ Obrigado mais uma vez e vamos para o próxima!!`#dreamBigger🚀💛`<br>
 
 
 <div align=left>
- 
+
 - <table>
  <p> Desenvolvido por:</p>
   <tr align=center>
@@ -227,41 +245,41 @@ Obrigado mais uma vez e vamos para o próxima!!`#dreamBigger🚀💛`<br>
   </tr>
    <td>
       <a href="https://github.com/br3nds0n">
-        <img width="168" height="140" src="https://user-images.githubusercontent.com/82064724/147268606-4fd3c629-8cb1-422b-a025-cf20b44930c7.jpeg" > <p align="left">                             
+        <img width="168" height="140" src="https://user-images.githubusercontent.com/82064724/147268606-4fd3c629-8cb1-422b-a025-cf20b44930c7.jpeg" > <p align="left">
 </p></a>
-    <p align="center">Code review - dev</p> 
+    <p align="center">Code review - dev</p>
     </td>
    <td>
       <a href="https://github.com/diogo-alexandre">
-        <img width="168" height="140" src="https://img.estadao.com.br/thumbs/640/resources/jpg/7/8/1508444708187.jpg" > <p align="left">                               
+        <img width="168" height="140" src="https://img.estadao.com.br/thumbs/640/resources/jpg/7/8/1508444708187.jpg" > <p align="left">
 </p></a>
-    <p align="center"> QA - dev</p> 
+    <p align="center"> QA - dev</p>
     </td>
     <td>
       <a href="https://github.com/Felipbdc">
-        <img width="168" height="140" src="https://user-images.githubusercontent.com/82064724/150272230-4ad07920-192d-4a0f-9e37-1514c116f317.png" > <p align="left">                                
+        <img width="168" height="140" src="https://user-images.githubusercontent.com/82064724/150272230-4ad07920-192d-4a0f-9e37-1514c116f317.png" > <p align="left">
 </p></a>
-     <p align="center">Scrum master-dev</p> 
+     <p align="center">Scrum master-dev</p>
     </td>
      <td>
       <a href="https://github.com/leoBarrosDev">
-        <img width="168" height="140" src="https://user-images.githubusercontent.com/82064724/150272417-f29ba5ad-574b-4471-889e-cff6e3406d16.png" > <p align="left">                                
+        <img width="168" height="140" src="https://user-images.githubusercontent.com/82064724/150272417-f29ba5ad-574b-4471-889e-cff6e3406d16.png" > <p align="left">
 </p></a>
-      <p align="center">Merge - dev</p> 
+      <p align="center">Merge - dev</p>
     </td>
   </td>
      <td>
       <a href="https://github.com/washington-wj">
-        <img width="168" height="140" src="https://user-images.githubusercontent.com/82064724/150542038-ec2476f0-c8fa-4f3c-8b7d-5b6dc7d95f2f.jpg" > <p align="left">                              
+        <img width="168" height="140" src="https://user-images.githubusercontent.com/82064724/150542038-ec2476f0-c8fa-4f3c-8b7d-5b6dc7d95f2f.jpg" > <p align="left">
 </p></a>
-      <p align="center">Deployer - dev</p> 
+      <p align="center">Deployer - dev</p>
     </td>
   </tr>
 </table>
 </div>
 
 <div align=left>
- 
+
 ---
 
 ## 📃 LICENÇA
@@ -269,7 +287,7 @@ Obrigado mais uma vez e vamos para o próxima!!`#dreamBigger🚀💛`<br>
 Esse repositório está licenciado pela **MIT LICENSE**. Para mais informações detalhadas, leia o arquivo [LICENSE](./LICENSE) contido nesse repositório.
 
  <br>
- 
-## 🎁 **Bonus** 
+
+## 🎁 **Bonus**
 
 <img height="340" width="850" src="https://user-images.githubusercontent.com/82064724/150680050-5458c736-de64-4e98-9584-97e9080199b1.png" >
