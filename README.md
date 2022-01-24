@@ -72,15 +72,17 @@ Neste desafio em grupo do programa de bolsas, será a criação de uma api de ca
 
 ###  Pré-requisitos
 
+
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/), [Postman](https://www.postman.com/downloads/) e [MongoDB](https://www.mongodb.com/pt-br).
 Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/).
 
-O [Docker](https://www.docker.com/) é opicional. Mas caso opte por utilizalo, o [Node.js](https://nodejs.org/en/) e [MongoDB](https://www.mongodb.com/pt-br) viram opcionais.
+O [Docker](https://www.docker.com/products/docker-desktop) é opicional. Mas caso opte por utilizalo, o [Node.js](https://nodejs.org/en/) e [MongoDB](https://www.mongodb.com/pt-br) viram opcionais.
 
 ### 🎲 Setup da aplicação
 
 #### 1. Clonando a aplicação localmente
+
 O primeiro passo para começar a configurar o servidor é clonar o repositório na sua máquina.
 
 ```bash
@@ -251,7 +253,7 @@ Obrigado mais uma vez e vamos para o próxima!!`#dreamBigger🚀💛`<br>
     </td>
    <td>
       <a href="https://github.com/diogo-alexandre">
-        <img width="168" height="140" src="https://img.estadao.com.br/thumbs/640/resources/jpg/7/8/1508444708187.jpg" > <p align="left">
+        <img width="168" height="140" src="https://user-images.githubusercontent.com/82064724/150702309-fcca4e25-45dd-484f-a3be-7f8dbdf57b84.jpeg" > <p align="left">
 </p></a>
     <p align="center"> QA - dev</p>
     </td>
@@ -259,20 +261,20 @@ Obrigado mais uma vez e vamos para o próxima!!`#dreamBigger🚀💛`<br>
       <a href="https://github.com/Felipbdc">
         <img width="168" height="140" src="https://user-images.githubusercontent.com/82064724/150272230-4ad07920-192d-4a0f-9e37-1514c116f317.png" > <p align="left">
 </p></a>
-     <p align="center">Scrum master-dev</p>
+     <p align="center">SM-CR-dev</p>
     </td>
      <td>
       <a href="https://github.com/leoBarrosDev">
         <img width="168" height="140" src="https://user-images.githubusercontent.com/82064724/150272417-f29ba5ad-574b-4471-889e-cff6e3406d16.png" > <p align="left">
 </p></a>
-      <p align="center">Merge - dev</p>
+      <p align="center">Deployer - dev</p>
     </td>
   </td>
      <td>
       <a href="https://github.com/washington-wj">
         <img width="168" height="140" src="https://user-images.githubusercontent.com/82064724/150542038-ec2476f0-c8fa-4f3c-8b7d-5b6dc7d95f2f.jpg" > <p align="left">
 </p></a>
-      <p align="center">Deployer - dev</p>
+      <p align="center">Merge - dev</p>
     </td>
   </tr>
 </table>
