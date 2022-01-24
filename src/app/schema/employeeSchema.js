@@ -32,21 +32,12 @@ const schema = new Schema({
     require: true,
     enum: ['activate', 'deactivate'],
     default: 'activate'
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-    immutable: true
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now
   }
-})
-
-schema.pre('save', function (next) {
-  this.updatedAt = Date.now()
-  return next()
+}, {
+  timestamps: {
+    createdAt: 'created_at',
+    updatedAt: 'updated_at'
+  }
 })
 
 schema.method('toJSON', function () {
