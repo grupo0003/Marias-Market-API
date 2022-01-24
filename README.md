@@ -26,7 +26,7 @@ Vamos ao projeto! `#dreamBigger🚀💛`
      * [Rotas](#-rotas)
    * [💻 Baixar e executar o projeto](#-Baixar-e-executar-o-projeto)
      * [🎲 Setup da aplicação](#-setup-da-aplicação)
-       * [Clonando a aplicação localmente](#-conectando-com-o-mongodb-database)
+       * [Clonando a aplicação localmente](#1-clonando-a-aplicação-localmente)
        * [Configurar as variáveis de ambiente](#-usando-o-docker-opicional)
    * [🛠 Tecnologias](#-tecnologias)
    * [🌟 Agradecimentos](#-Agradecimentos)
