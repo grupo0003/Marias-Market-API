@@ -290,3 +290,4 @@ Esse repositório está licenciado pela **MIT LICENSE**. Para mais informações
 ## 🎁 **Bonus**
 
 <img height="340" width="850" src="https://user-images.githubusercontent.com/82064724/150680050-5458c736-de64-4e98-9584-97e9080199b1.png" >
+
