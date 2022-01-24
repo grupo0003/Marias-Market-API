@@ -25,9 +25,9 @@ Vamos ao projeto! `#dreamBigger🚀💛`
    * [🧠 Contexto](#-Contexto)
      * [Rotas](#-rotas)
    * [💻 Baixar e executar o projeto](#-Baixar-e-executar-o-projeto)
-     * [Rodando o Back End](#-rodando-o-back-end-servidor)
-     * [Conectando com o MongoDb](#-conectando-com-o-mongodb-database)
-     * [Usando o Docker](#-usando-o-docker-opicional)
+     * [🎲 Setup da aplicação](#-rodando-o-back-end-servidor)
+       * [Clonando a aplicação localmente](#-conectando-com-o-mongodb-database)
+       * [Configurar as variáveis de ambiente](#-usando-o-docker-opicional)
    * [🛠 Tecnologias](#-tecnologias)
    * [🌟 Agradecimentos](#-Agradecimentos)
    * [✏ Contribuintes](#-Contribuintes)
@@ -148,7 +148,7 @@ $ npm run docker:up:dev
 ```
 
 Para iniciar em todo de `test` (Teste de feature):
-```bash
+```bashss 
 # Sem docker
 $ npm run test
 
