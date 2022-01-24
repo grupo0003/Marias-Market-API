@@ -271,7 +271,7 @@ Obrigado mais uma vez e vamos para o próxima!!`#dreamBigger🚀💛`<br>
       <a href="https://github.com/washington-wj">
         <img width="168" height="140" src="https://user-images.githubusercontent.com/82064724/150542038-ec2476f0-c8fa-4f3c-8b7d-5b6dc7d95f2f.jpg" > <p align="left">
 </p></a>
-      <p align="center">Merge - dev</p>
+      <p align="center">Developer</p>
     </td>
   </tr>
 </table>
