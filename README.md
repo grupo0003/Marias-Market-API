@@ -94,10 +94,8 @@ $ cd register-Employees-Products-
 
 #### 2. Configurar as variáveis de ambiente
 O servidor usa de variáveis de ambiente para transportar dados sensíveis pela aplicação.
-É necessário ter dois arquivos para guardar esses dados.
-`.env.development` e `.env.production`.
 
-Será necessário criar na raiz do projeto estes 2 arquivos e configurar as variáveis:
+Será necessário criar na raiz do projeto um arquivo `.env` configurar as variáveis:
 ```bash
 # Porta que o servidor irá rodar.
 PORT=3000
@@ -123,7 +121,7 @@ DB_PASS=pass
 # Database que será guardada as Coleções
 DB_DATABASE=desafio-03
 ```
-Tanto `.env.development` como `.env.production` utilizam das mesmas variáveis.
+> Utilizando o docker, DB_USER e DB_PASS podem ser qualquer valor.
 
 ### ▶ Iniciando a aplicação
 Depois de ter as variáveis de ambiente configuradas, basta iniciar o servidor.
@@ -147,7 +145,7 @@ $ npm run docker:up:dev
 ```
 
 Para iniciar em todo de `test` (Teste de feature):
-```bashss 
+```bash
 # Sem docker
 $ npm run test
 
@@ -292,3 +290,4 @@ Esse repositório está licenciado pela **MIT LICENSE**. Para mais informações
 ## 🎁 **Bonus**
 
 <img height="340" width="850" src="https://user-images.githubusercontent.com/82064724/150680050-5458c736-de64-4e98-9584-97e9080199b1.png" >
+
