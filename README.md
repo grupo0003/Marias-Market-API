@@ -30,8 +30,8 @@ Vamos ao projeto! `#dreamBigger🚀💛`
    * [🛠 Tecnologias](#-tecnologias)
    * [🌟 Agradecimentos](#-Agradecimentos)
    * [✏ Contribuintes](#-Contribuintes)
-   * [📃 Licença](#user-content--licença)
-   * [🎁 Bonus ](#bonus)
+   * [📃 Licença](#-licença)
+   * [🎁 Bonus ](#-bonus)
 <!--te-->
 
 <br>
@@ -256,7 +256,7 @@ Obrigado mais uma vez e vamos para o próxima!!`#dreamBigger🚀💛`<br>
     </td>
     <td>
       <a href="https://github.com/Felipbdc">
-        <img width="168" height="140" src="https://user-images.githubusercontent.com/82064724/150272230-4ad07920-192d-4a0f-9e37-1514c116f317.png" > <p align="left">
+        <img width="168" height="140" src="https://user-images.githubusercontent.com/82064724/150708830-97c4e2d4-4845-4ec3-965a-eae4f7493fd9.jpeg" > <p align="left">
 </p></a>
      <p align="center">SM-CR-dev</p>
     </td>
