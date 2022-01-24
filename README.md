@@ -25,9 +25,8 @@ Vamos ao projeto! `#dreamBigger🚀💛`
    * [🧠 Contexto](#-Contexto)
      * [Rotas](#-rotas)
    * [💻 Baixar e executar o projeto](#-Baixar-e-executar-o-projeto)
-     * [🎲 Setup da aplicação](#-setup-da-aplicação)
-       * [Clonando a aplicação localmente](#1-clonando-a-aplicação-localmente)
-       * [Configurar as variáveis de ambiente](#-usando-o-docker-opicional)
+     * [Setup da aplicação](#-setup-da-aplicação)
+     * [Iniciando a aplicação](#-iniciando-a-aplicação)
    * [🛠 Tecnologias](#-tecnologias)
    * [🌟 Agradecimentos](#-Agradecimentos)
    * [✏ Contribuintes](#-Contribuintes)
@@ -126,7 +125,7 @@ DB_DATABASE=desafio-03
 ```
 Tanto `.env.development` como `.env.production` utilizam das mesmas variáveis.
 
-### 🔗 Iniciando a aplicação
+### ▶ Iniciando a aplicação
 Depois de ter as variáveis de ambiente configuradas, basta iniciar o servidor.
 
 Para subir em modo `produção`, basta executar:
